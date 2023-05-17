@@ -98,6 +98,31 @@ ValueType Stack<ValueType>::peek() const{
     return list->data;
 }
 
+template <typename ValueType>
+Stack<ValueType>::Stack(const Stack<ValueType> & src){
+    if (this != &src){
+        clear();
+        deepCopy(src);
+    }
+    return *this;
+}
+
+template <typename ValueType>
+void Stack<ValueType>::deepCopy(const Stack<ValueType> & src){
+    count = src.count;
+    Cell *tail = NULL;
+    for (Cell *cp = src.list; cp != NULL; cp = cp->link){
+        Cell *ncp = new Cell;
+        ncp->data = cp->data;
+        if (tail == NULL){
+            list = ncp;
+        } else {
+            tail->link = ncp;
+        }
+        tail = ncp;
+    }
+    if (tail != NULL) tail->link = NULL;    
+}
 
 
 #endif // STACK_H
