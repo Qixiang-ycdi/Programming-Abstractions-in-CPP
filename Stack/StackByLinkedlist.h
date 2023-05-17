@@ -1,4 +1,6 @@
-/*implement stack using Linked list*/
+/*implement stack using Linked list
+please rename the file to "stack.h"*/
+
 #ifndef STACK_H
 #define STACK_H
 
